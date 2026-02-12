@@ -14,3 +14,15 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      author:
+        select: head > meta[name="author"]
+        value: attribute(el, "content")
+      date:
+        select: head > meta[name="publication-date"]
+        value: attribute(el, "content")
