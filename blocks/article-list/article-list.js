@@ -16,11 +16,12 @@ async function fetchArticles() {
     // Filter for article pages (pages with /articles/ path)
     const articles = data.data
       .filter((page) => page.path && page.path.startsWith('/articles/'))
+      .filter((page) => page.lastModified) // Only include articles with valid dates
       .map((page) => ({
         title: page.title || '',
         description: page.description || '',
         path: page.path,
-        date: page.lastModified || new Date().toISOString(),
+        date: page.lastModified,
         urlkey: page.path.split('/').pop(),
       }))
       .sort((a, b) => new Date(b.date) - new Date(a.date))
